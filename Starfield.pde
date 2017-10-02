@@ -1,26 +1,57 @@
-//your code here
+Particle[] aBunch = new NormalParticle[500];
 void setup()
 {
-	//your code here
+	size(500, 500);
+  for (int i = 0; i < aBunch.length; i++)
+  {
+    aBunch[i] = new NormalParticle();
+    aBunch[0] = new OddballParticle();
+  }
 }
 void draw()
 {
-	//your code here
+	background(0);
+  for (int i = 0; i < aBunch.length; i++)
+  {
+    aBunch[i].move();
+    aBunch[i].show();
+  }
 }
 class NormalParticle
 {
-	//your code here
+	Double myX, myY, myDir, mySpeed;
+  int myColor, size;
+  NormalParticle()
+  {
+    int myX = 250;
+    int myY = 250;
+    myColor = color(0);
+  }
+  public void move()
+  {
+  }
+  public void show()
+  {
+  }
 }
 interface Particle
 {
-	//your code here
+	public void show();
+  public void move();
 }
 class OddballParticle //uses an interface
 {
-	//your code here
+	OddballParticle()
+  {
+  }
+  public void move()
+  {
+  }
+  public void show()
+  {
+  }
 }
 class JumboParticle //uses inheritance
 {
 	//your code here
 }
-
