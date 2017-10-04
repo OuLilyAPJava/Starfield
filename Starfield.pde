@@ -14,13 +14,13 @@ void draw()
 	background(0);
   for (int i = 0; i < aBunch.length; i++)
   {
-    aBunch[i].move();
     aBunch[i].show();
+    aBunch[i].move();
   }
 }
-class NormalParticle
+class NormalParticle implements Particle
 {
-	Double myX, myY, myDir, mySpeed;
+	double myX, myY, myDir, mySpeed;
   int myColor, size;
   NormalParticle()
   {
@@ -28,7 +28,8 @@ class NormalParticle
     myY = 250;
     myDir = Math.random()*360;
     mySpeed = Math.random()*5;
-    myColor = color(0);
+    myColor = color(255);
+    size = 5;
   }
   public void move()
   {
@@ -38,7 +39,7 @@ class NormalParticle
   public void show()
   {
     fill(myColor);
-    ellipse(myX, myY, size, size);
+    ellipse((float)myX, (float)myY, size, size);
   }
 }
 interface Particle
@@ -46,8 +47,9 @@ interface Particle
 	public void show();
   public void move();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle//uses an interface
 {
+  int myX, myY;
 	OddballParticle()
   {
   }
@@ -64,6 +66,6 @@ class JumboParticle extends NormalParticle//uses inheritance
   public void show()
   {
     fill(myColor);
-	//your code here
+    ellipse((float)myX, (float)myY, size * 2, size * 2);
   }
 }
