@@ -11,7 +11,8 @@ void setup()
 }
 void draw()
 {
-	background(0);
+  fill(0, 0, 0, 50);
+	rect(0, 0, 500, 500);
   for (int i = 0; i < aBunch.length; i++)
   {
     aBunch[i].show();
@@ -29,7 +30,7 @@ class NormalParticle implements Particle
     myDir = Math.random()*360;
     mySpeed = Math.random()*5;
     myColor = color(255);
-    size = 5;
+    size = (int)(Math.random()*5)+2;
   }
   public void move()
   {
