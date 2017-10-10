@@ -30,7 +30,7 @@ class NormalParticle implements Particle
     myDir = Math.random()*360;
     mySpeed = Math.random()*5;
     myColor = color(255);
-    size = (int)(Math.random()*5)+2;
+    size = (int)(Math.random()*3)+2;
   }
   public void move()
   {
@@ -64,9 +64,26 @@ class OddballParticle implements Particle//uses an interface
 
 class JumboParticle extends NormalParticle//uses inheritance
 {
+  public void move()
+  {
+    myX += mySpeed/1.5 * Math.cos(myDir);
+    myY += mySpeed/1.5 * Math.sin(myDir);
+  }
   public void show()
   {
-    fill(myColor);
-    ellipse((float)myX, (float)myY, size * 2, size * 2);
+    fill(100, 100, 255);
+    //ellipse((float)myX, (float)myY, 25, 25);
+    beginShape();//begin drawing the shape -- It's a big star
+     vertex(300,20);
+     vertex(380,200);
+     vertex(580,200);
+     vertex(400,350);
+     vertex(530,580);
+     vertex(300,430);
+     vertex(70,580);
+     vertex(200,350);
+     vertex(20,200);
+     vertex(220,200);
+     endShape();//end of the shape
   }
 }
