@@ -1,7 +1,7 @@
 Particle[] aBunch = new Particle[500];
 void setup()
 {
-	size(500, 500);
+  size(500, 500);
   for (int i = 0; i < aBunch.length; i++)
   {
     aBunch[i] = new NormalParticle();
@@ -12,7 +12,7 @@ void setup()
 void draw()
 {
   fill(0, 0, 0, 50);
-	rect(0, 0, 500, 500);
+  rect(0, 0, 500, 500);
   for (int i = 0; i < aBunch.length; i++)
   {
     aBunch[i].show();
@@ -21,7 +21,7 @@ void draw()
 }
 class NormalParticle implements Particle
 {
-	double myX, myY, myDir, mySpeed;
+  double myX, myY, myDir, mySpeed;
   int myColor, size;
   NormalParticle()
   {
@@ -45,13 +45,13 @@ class NormalParticle implements Particle
 }
 interface Particle
 {
-	public void show();
+  public void show();
   public void move();
 }
 class OddballParticle implements Particle//uses an interface
 {
   int myX, myY;
-	OddballParticle()
+  OddballParticle()
   {
   }
   public void move()
@@ -59,6 +59,16 @@ class OddballParticle implements Particle//uses an interface
   }
   public void show()
   {
+    fill(230, 204, 255);
+    arc(250, 250, 100, 100, PI, 2*PI);
+    fill(40, 0, 77);
+    ellipse(250, 250, 175, 20);
+    strokeWeight(5);
+    stroke(40, 0, 77);
+    line(230, 250, 210, 285);
+    line(270, 250, 290, 285);
+    strokeWeight(1);
+    stroke(0);
   }
 }
 
@@ -71,19 +81,21 @@ class JumboParticle extends NormalParticle//uses inheritance
   }
   public void show()
   {
-    fill(100, 100, 255);
-    //ellipse((float)myX, (float)myY, 25, 25);
-    beginShape();//begin drawing the shape -- It's a big star
-     vertex(300,20);
-     vertex(380,200);
-     vertex(580,200);
-     vertex(400,350);
-     vertex(530,580);
-     vertex(300,430);
-     vertex(70,580);
-     vertex(200,350);
-     vertex(20,200);
-     vertex(220,200);
-     endShape();//end of the shape
+    //star
+    noStroke();
+    fill(255);
+    beginShape();
+    vertex((float)myX, (float)myY);
+    vertex((float)myX + 3.5, (float)myY + 8.5);
+    vertex((float)myX + 14, (float)myY + 9);
+    vertex((float)myX + 5, (float)myY + 15);
+    vertex((float)myX + 10, (float)myY + 27);
+    vertex((float)myX, (float)myY + 20);
+    vertex((float)myX - 10, (float)myY + 27);
+    vertex((float)myX - 5, (float)myY + 15);
+    vertex((float)myX - 14, (float)myY + 9);
+    vertex((float)myX - 3.5, (float)myY + 8.5);
+    endShape();
+    stroke(0);
   }
 }
