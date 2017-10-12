@@ -28,9 +28,9 @@ class NormalParticle implements Particle
     myX = 250;
     myY = 250;
     myDir = Math.random()*360;
-    mySpeed = Math.random()*5;
+    mySpeed = Math.random()*4;
     myColor = color(255);
-    size = (int)(Math.random()*3)+2;
+    size = (int)(Math.random()*3)+1;
   }
   public void move()
   {
@@ -61,14 +61,16 @@ class OddballParticle implements Particle//uses an interface
   {
     fill(230, 204, 255);
     arc(250, 250, 100, 100, PI, 2*PI);
-    fill(40, 0, 77);
-    ellipse(250, 250, 175, 20);
-    strokeWeight(5);
-    stroke(40, 0, 77);
+    strokeWeight(4);
+    stroke(105, 0, 204);
     line(230, 250, 210, 285);
     line(270, 250, 290, 285);
     strokeWeight(1);
     stroke(0);
+    fill(40, 0, 77);
+    ellipse(250, 250, 175, 20);
+    ellipse(210, 285, 8, 8);
+    ellipse(290, 285, 8, 8);
   }
 }
 
