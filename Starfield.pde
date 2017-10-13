@@ -18,6 +18,14 @@ void draw()
     aBunch[i].show();
     aBunch[i].move();
   }
+  if (((OddballParticle)aBunch[0]).myX > 350)
+  {
+    ((OddballParticle)aBunch[0]).mySpeed = -((OddballParticle)aBunch[0]).mySpeed;
+  }
+  else if (((OddballParticle)aBunch[0]).myX < 150)
+  {
+    ((OddballParticle)aBunch[0]).mySpeed = -((OddballParticle)aBunch[0]).mySpeed;
+  }
 }
 class NormalParticle implements Particle
 {
@@ -50,37 +58,52 @@ interface Particle
 }
 class OddballParticle implements Particle//uses an interface
 {
-  int myX, myY;
+  int myX, myY, mySpeed;
   OddballParticle()
   {
+    myX = 250;
+    myY = 230;
+    mySpeed = 1;
   }
   public void move()
   {
+    myX = myX + mySpeed;
   }
+  
   public void show()
   {
+    //spaceship
     fill(230, 204, 255);
-    arc(250, 250, 100, 100, PI, 2*PI);
+    arc(myX, myY, 100, 100, PI, 2*PI);
+    //alien
+    noStroke();
+    fill(200, 200, 200);
+    ellipse(myX, myY - 15, 20, 30);
+    stroke(204, 204, 204);
+    strokeWeight(2);
+    line(myX - 5, myY - 25, myX - 10, myY - 40);
+    line(myX + 5, myY - 25, myX + 10, myY - 40);
+    //spaceship
     strokeWeight(4);
     stroke(105, 0, 204);
-    line(230, 250, 210, 285);
-    line(270, 250, 290, 285);
+    line(myX - 20, myY, myX - 40, myY + 35);
+    line(myX + 20, myY, myX + 40, myY + 35);
     strokeWeight(1);
     stroke(0);
     fill(40, 0, 77);
-    ellipse(250, 250, 175, 20);
-    ellipse(210, 285, 8, 8);
-    ellipse(290, 285, 8, 8);
+    ellipse(myX, myY, 175, 20);
+    ellipse(myX - 40, myY + 35, 10, 10);
+    ellipse(myX + 40, myY + 35, 10, 10);
   }
 }
 
 class JumboParticle extends NormalParticle//uses inheritance
 {
-  public void move()
+  /*public void move()
   {
     myX += mySpeed/1.5 * Math.cos(myDir);
     myY += mySpeed/1.5 * Math.sin(myDir);
-  }
+  }*/
   public void show()
   {
     //star
