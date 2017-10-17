@@ -62,7 +62,7 @@ class OddballParticle implements Particle//uses an interface
   OddballParticle()
   {
     myX = 250;
-    myY = 230;
+    myY = 250;
     mySpeed = 1;
   }
   public void move()
